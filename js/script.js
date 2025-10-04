@@ -13,19 +13,24 @@ const bikes = [
   { nome: "bici7", peso: 7.4 },
   { nome: "bici8", peso: 7.6 },
   { nome: "bici9", peso: 5.9 },
-  { nome: "bici10", peso: 8.0 }
+  { nome: "bici10", peso: 8.0 },
 ];
 
 let lessWeightBike = bikes[0];
 for (let i = 1; i < bikes.length; i++) {
-    const curBike = bikes[i];
-    if (curBike.peso < lessWeightBike.peso) {
-        lessWeightBike = curBike;
-    }
+  const curBike = bikes[i];
+  if (curBike.peso < lessWeightBike.peso) {
+    lessWeightBike = curBike;
+  }
 }
 console.log(bikes);
-console.log("la bici che pesa di meno è:", lessWeightBike.nome, "e pesa:", lessWeightBike.peso, "kg");
-
+console.log(
+  "la bici che pesa di meno è:",
+  lessWeightBike.nome,
+  "e pesa:",
+  lessWeightBike.peso,
+  "kg"
+);
 
 // Snack2
 // Creare un array di oggetti di squadre di calcio.
@@ -44,25 +49,60 @@ const teams = [
   { nome: "Squadra7", puntiFatti: 0, falliSubiti: 0 },
   { nome: "Squadra8", puntiFatti: 0, falliSubiti: 0 },
   { nome: "Squadra9", puntiFatti: 0, falliSubiti: 0 },
-  { nome: "Squadra10", puntiFatti: 0, falliSubiti: 0 }
+  { nome: "Squadra10", puntiFatti: 0, falliSubiti: 0 },
 ];
 
 const teamsFouls = [];
 for (let i = 0; i < teams.length; i++) {
-    const curTeam = teams[i];
-    curTeam.puntiFatti = generateRandomNumber(1, 50);
-    curTeam.falliSubiti = generateRandomNumber(1, 20);
-    teamsFouls.push({nome: curTeam.nome, falliSubiti: curTeam.falliSubiti})
+  const curTeam = teams[i];
+  curTeam.puntiFatti = generateRandomNumber(1, 50);
+  curTeam.falliSubiti = generateRandomNumber(1, 20);
+  teamsFouls.push({ nome: curTeam.nome, falliSubiti: curTeam.falliSubiti });
 }
 
 console.log(teams);
 console.log(teamsFouls);
 
-
-
 // Snack 3 (Bonus)
-// Scrivere una funzione che accetti tre argomenti, un array e due numeri (a più piccolo di b). 
+// Scrivere una funzione che accetti tre argomenti, un array e due numeri (a più piccolo di b).
 // La funzione ritornerà un nuovo array con i valori che hanno la posizione compresa tra i due numeri. Non usare i metodi di array di JS
+
+const numbers = [10, 20, 30, 40, 50, 60, 70, 80, 90];
+
+function valuesBetween(array, index1, index2) {
+  const arrayValuesBetween = [];
+  for (let i = 0; i < array.length; i++) {
+    const curValue = array[i];
+    if (i > index1 && i < index2) {
+      arrayValuesBetween.push(curValue);
+    }
+  }
+  return arrayValuesBetween;
+}
+
+console.log(valuesBetween(numbers, 2, 6));
+
+
+//funzione con .slice
+function valuesBetween2(array, index1, index2) {
+  return array.slice(index1 + 1, index2);
+}
+
+console.log(valuesBetween2(numbers, 2, 6));
+
+//funzione senza .push
+function valuesBetween3(array, index1, index2) {
+  const arrayValuesBetween = [];
+  for (let i = 0; i < array.length; i++) {
+    const curValue = array[i];
+    if (i > index1 && i < index2) {
+      arrayValuesBetween[arrayValuesBetween.length] = curValue;
+    }
+  }
+  return arrayValuesBetween;
+}
+
+console.log(valuesBetween3(numbers, 2, 6));
 
 // Snack 4 (Bonus)
 
@@ -70,12 +110,8 @@ console.log(teamsFouls);
 // prendendo alternativamente gli elementi da uno e dall’altro
 // es. [a,b,c], [1,2,3,4,5] → [a,1,b,2,c,3,4,5].
 
-
 // const array1 = [1, 2, 3, 4, 5];
-// const array2 = ["a", "b", "c"]; 
-
-
-
+// const array2 = ["a", "b", "c"];
 
 //Funzioni
 // Function Random
