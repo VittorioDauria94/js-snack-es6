@@ -128,9 +128,57 @@ function arrayJoiner(array1, array2) {
 
 console.log(arrayJoiner(nums, letters));
 
+// Snack 5 (creato da solo)
+
+// Crea un array di oggetti che rappresentano studenti.
+// Ogni studente ha queste proprietà:
+
+// nome (stringa)
+
+// voti (array di numeri da 1 a 10)
+
+// Popola l’array con almeno 5 studenti, ognuno con almeno 3 voti.
+
+// Scrivi una funzione che calcoli la media dei voti per ogni studente.
+
+// Restituisci un nuovo array di oggetti con solo il nome e la media dei voti.
+
+// Stampa il risultato in console.
+
+const students = [
+  { nome: "Studente1", voti: [0, 0, 0] },
+  { nome: "Studente2", voti: [0, 0, 0] },
+  { nome: "Studente3", voti: [0, 0, 0] },
+  { nome: "Studente4", voti: [0, 0, 0] },
+  { nome: "Studente5", voti: [0, 0, 0] },
+];
+
+const averagePointsStudent = [];
+
+for (let i = 0; i < students.length; i++) {
+  const curStudent = students[i];
+  for (let k = 0; k < curStudent.voti.length; k++) {
+    curStudent.voti[k] = generateRandomNumber(1, 10);
+  }
+  const average = gradePointAverage(curStudent.voti);
+  averagePointsStudent.push({ nome: curStudent.nome, mediaVoti: average.toFixed(1) });
+}
+
+console.log(students);
+console.log(averagePointsStudent);
+
 //Funzioni di appoggio
 // Funzione random
 function generateRandomNumber(min, max) {
   const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
   return randomNumber;
+}
+
+function gradePointAverage(array) {
+  let sum = 0;
+  for (let i = 0; i < array.length; i++) {
+    const curElement = array[i];
+    sum += curElement;
+  }
+  return sum / array.length;
 }
