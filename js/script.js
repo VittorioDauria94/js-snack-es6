@@ -82,7 +82,6 @@ function valuesBetween(array, index1, index2) {
 
 console.log(valuesBetween(numbers, 2, 6));
 
-
 //funzione con .slice
 function valuesBetween2(array, index1, index2) {
   return array.slice(index1 + 1, index2);
@@ -110,11 +109,27 @@ console.log(valuesBetween3(numbers, 2, 6));
 // prendendo alternativamente gli elementi da uno e dall’altro
 // es. [a,b,c], [1,2,3,4,5] → [a,1,b,2,c,3,4,5].
 
-// const array1 = [1, 2, 3, 4, 5];
-// const array2 = ["a", "b", "c"];
+const nums = [1, 2, 3, 4, 5];
+const letters = ["a", "b", "c"];
 
-//Funzioni
-// Function Random
+function arrayJoiner(array1, array2) {
+  const mergedArray = [];
+  const maxLength = Math.max(array1.length, array2.length);
+  for (let i = 0; i < maxLength; i++) {
+    if (array1.length > i) {
+      mergedArray.push(array1[i]);
+    }
+    if (array2.length > i) {
+      mergedArray.push(array2[i]);
+    }
+  }
+  return mergedArray;
+}
+
+console.log(arrayJoiner(nums, letters));
+
+//Funzioni di appoggio
+// Funzione random
 function generateRandomNumber(min, max) {
   const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
   return randomNumber;
