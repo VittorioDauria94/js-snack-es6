@@ -161,11 +161,121 @@ for (let i = 0; i < students.length; i++) {
     curStudent.voti[k] = generateRandomNumber(1, 10);
   }
   const average = gradePointAverage(curStudent.voti);
-  averagePointsStudent.push({ nome: curStudent.nome, mediaVoti: average.toFixed(1) });
+  averagePointsStudent.push({
+    nome: curStudent.nome,
+    mediaVoti: parseFloat(average.toFixed(1)),
+  });
 }
 
 console.log(students);
 console.log(averagePointsStudent);
+
+/** Snack: Torneo di basket
+
+Crea un array di 3 squadre.
+
+Ogni squadra è un oggetto con:
+
+nome (stringa)
+
+giocatori (array di 5 giocatori)
+
+Ogni giocatore ha:
+
+nome
+
+punti (numero inizialmente 0)
+
+Simula una partita:
+
+Per ogni squadra, genera per ogni giocatore un numero casuale di punti segnati tra 0 e 20.
+
+Calcola:
+
+Il totale punti di ogni squadra
+
+Il giocatore con più punti segnati in tutto il torneo
+
+Stampa in console:
+
+L’array completo delle squadre con i punti dei giocatori
+
+I totali punti di ogni squadra
+
+Il giocatore top scorer (nome, punti e squadra)*/
+
+const basketTeams = [
+  {
+    nome: "Squadra A",
+    giocatori: [
+      { nome: "Giocatore A1", punti: 0 },
+      { nome: "Giocatore A2", punti: 0 },
+      { nome: "Giocatore A3", punti: 0 },
+      { nome: "Giocatore A4", punti: 0 },
+      { nome: "Giocatore A5", punti: 0 },
+    ],
+  },
+  {
+    nome: "Squadra B",
+    giocatori: [
+      { nome: "Giocatore B1", punti: 0 },
+      { nome: "Giocatore B2", punti: 0 },
+      { nome: "Giocatore B3", punti: 0 },
+      { nome: "Giocatore B4", punti: 0 },
+      { nome: "Giocatore B5", punti: 0 },
+    ],
+  },
+  {
+    nome: "Squadra C",
+    giocatori: [
+      { nome: "Giocatore C1", punti: 0 },
+      { nome: "Giocatore C2", punti: 0 },
+      { nome: "Giocatore C3", punti: 0 },
+      { nome: "Giocatore C4", punti: 0 },
+      { nome: "Giocatore C5", punti: 0 },
+    ],
+  },
+];
+
+let bestPlayersPoint = 0;
+const bestPlayers = [];
+const totalPointsTeams = [];
+
+for (let i = 0; i < basketTeams.length; i++) {
+  const curTeam = basketTeams[i];
+  let teamTotal = 0;
+
+  for (let k = 0; k < curTeam.giocatori.length; k++) {
+    const curPlayer = curTeam.giocatori[k];
+    curPlayer.punti = generateRandomNumber(0, 20);
+    teamTotal += curPlayer.punti;
+
+    if (curPlayer.punti > bestPlayersPoint) {
+      bestPlayersPoint = curPlayer.punti;
+      bestPlayers.length = 0;
+      bestPlayers.push({
+        squadra: curTeam.nome,
+        nome: curPlayer.nome,
+        punti: curPlayer.punti,
+      });
+    } else if (curPlayer.punti === bestPlayersPoint) {
+      bestPlayers.push({
+        squadra: curTeam.nome,
+        nome: curPlayer.nome,
+        punti: curPlayer.punti,
+      });
+    }
+  }
+
+  totalPointsTeams.push({
+    nome: curTeam.nome,
+    puntiTotali: teamTotal,
+  });
+}
+
+console.log(basketTeams);
+console.log(totalPointsTeams);
+console.log(bestPlayers);
 
 //Funzioni di appoggio
 // Funzione random
@@ -174,6 +284,7 @@ function generateRandomNumber(min, max) {
   return randomNumber;
 }
 
+//Funzione media di un array di numeri
 function gradePointAverage(array) {
   let sum = 0;
   for (let i = 0; i < array.length; i++) {
